@@ -1,20 +1,30 @@
-import React from 'react'
-import Navbar from './Navbar'
-import Taskbar from './Taskbar'
-import Addtask from './Addtask'
+import { SECTION } from "../utils/sectiontype";
+import Addtask from "./Addtask";
+import Search from './Search'
+import Today from './Today'
+import Upcoming from './Upcoming'
+import Filter from './Filter'
+import Complete from './Complete'
+import Taskbar from "./Taskbar";
+import Navbar from "./Navbar"
+import { useSelector } from "react-redux";
+const Home=()=>{
+const active = useSelector((store) => store.button.active);
 
-const Home = () => {
-  return (
-    <div>
-      <Navbar/>
-      {//taskbar verticle
-      }
-      <div className='flex'>
-        <Taskbar/>
-        <Addtask/>
-      </div>
+return (
+  <div>
+    <Navbar />
+    <div className="flex">
+      <Taskbar />
+
+      {active === SECTION.ADD && <Addtask />}
+      {active === SECTION.SEARCH && <Search />}
+      {active === SECTION.TODAY && <Today />}
+      {active === SECTION.UPCOMING && <Upcoming />}
+      {active === SECTION.FILTER && <Filter />}
+      {active === SECTION.COMPLETE && <Complete />}
     </div>
-  )
-}
-
-export default Home
+  </div>
+);
+};
+export default Home;
