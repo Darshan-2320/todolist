@@ -4,7 +4,7 @@ import { SECTION } from "./sectiontype";
 const buttonslice = createSlice({
   name: "button",
   initialState: {
-    active: SECTION.ADD,
+    active: SECTION.NONE,
   },
   reducers: {
     setActive: (state, action) => {
